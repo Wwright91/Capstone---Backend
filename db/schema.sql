@@ -9,7 +9,7 @@ CREATE TABLE businesses (
     id SERIAL PRIMARY KEY, 
     name TEXT,
     address TEXT,
-    contact_num INT,
+    contact_num TEXT,
     year_opened NUMERIC,
     is_online BOOLEAN,
     is_store BOOLEAN,
@@ -19,17 +19,22 @@ CREATE TABLE businesses (
     description TEXT
 );
 
-DROP TABLE IF EXISTS signup;
+DROP TABLE IF EXISTS login;
 
-CREATE TABLE signup (
-    name TEXT,
+CREATE TABLE login (
+    first_name TEXT,
+    last_name TEXT,
     email TEXT,
     password TEXT
 );
 
-DROP TABLE IF EXISTS login;
+DROP TABLE IF EXISTS user_profile;
 
-CREATE TABLE login (
+CREATE TABLE user_profile (
+    id SERIAL PRIMARY KEY,
+    first_name TEXT,
+    last_name TEXT,
+    usernmae TEXT,
     email TEXT,
     password TEXT
 );

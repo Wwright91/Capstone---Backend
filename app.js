@@ -10,6 +10,9 @@ app.get("/", (req, res) => {
   res.send("Welcome");
 });
 
+const businessesController = require("./controllers/businessesController.js")
+app.use("/businesses", businessesController)
+
 app.get("*", (req, res) => {
   res.status(404).send("Page not found!");
 });
