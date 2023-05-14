@@ -13,6 +13,11 @@ app.get("/", (req, res) => {
 const businessesController = require("./controllers/businessesController.js")
 app.use("/businesses", businessesController)
 
+
+const usersController = require("./controllers/usersController.js")
+app.use("/users", usersController)
+
+
 app.get("*", (req, res) => {
   res.status(404).send("Page not found!");
 });
