@@ -46,10 +46,18 @@ const updateUser = async (id, userObj) => {
       return error;
     }
   };
+  const getUserByEmail= async (email)=>{
+    try {
+      const user= await db.any("SELECT * FROM user_profile WHERE email=$1",email);
+      return user
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
 
 
 
 
 
-
-module.exports={createNewUser,getAllUsers,updateUser,deleteUser}
+module.exports={createNewUser,getAllUsers,updateUser,deleteUser,getUserByEmail}
