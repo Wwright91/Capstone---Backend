@@ -7,13 +7,16 @@ const {
   createBusiness,
   deleteBusiness,
   updateBusiness,
-  getByCategory
+  getByCategory,
 } = require("../queries/businesses");
 
 const {
   checkName,
   checkBoolean,
 } = require("../validations/checkBusinesses.js");
+
+const commentsController = require("./commentsController.js");
+businesses.use("/:businessId/comments", commentsController);
 
 businesses.get("/", async (req, res) => {
   const allBusinesses = await getAllBusinesses();
@@ -59,7 +62,6 @@ businesses.put("/:id", checkName, checkBoolean, async (req, res) => {
   const updatedBusiness = await updateBusiness(id, req.body);
   res.status(200).json(updatedBusiness);
 });
-
 
 businesses.get("/categories/:category", async (req, res) => {
   const { category } = req.params;
