@@ -38,3 +38,13 @@ CREATE TABLE user_profile (
     email TEXT,
     password TEXT
 );
+
+DROP TABLE IF EXISTS comments;
+
+CREATE TABLE comments (
+ id SERIAL PRIMARY KEY,
+ commenter TEXT,
+ content TEXT,
+ business_id INTEGER REFERENCES businesses (id)
+ ON DELETE CASCADE
+);
