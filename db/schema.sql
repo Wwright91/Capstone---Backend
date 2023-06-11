@@ -39,7 +39,6 @@ CREATE TABLE user_profile (
     password TEXT,
     favorites TEXT,
     uid TEXT
-
 );
 
 DROP TABLE IF EXISTS favorites;
@@ -47,6 +46,14 @@ DROP TABLE IF EXISTS favorites;
 CREATE TABLE favorites (
     business_id INT,
     user_id TEXT
-
 );
 
+DROP TABLE IF EXISTS comments;
+
+CREATE TABLE comments (
+ id SERIAL PRIMARY KEY,
+ commenter TEXT,
+ content TEXT,
+ business_id INTEGER REFERENCES businesses (id)
+ ON DELETE CASCADE
+);

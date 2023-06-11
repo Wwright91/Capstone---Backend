@@ -40,3 +40,6 @@ INSERT INTO businesses (name, address, contact_num, year_opened, is_online, is_s
 
 INSERT INTO user_profile (first_name,last_name,username,email,password) VALUES
 ('first','last','username','email','pw');
+
+INSERT INTO comments (commenter, content, business_id) VALUES 
+('Wiz', 'I like this business', 1);
