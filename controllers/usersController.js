@@ -1,7 +1,7 @@
 const express = require("express");
 const users = express.Router();
 
-const {createNewUser,getAllUsers,updateUser,deleteUser,getUserByEmail}=require("../queries/userProfile")
+const {createNewUser,getAllUsers,updateUser,deleteUser,getUserByEmail, getUserByUID,getAllFavorites,addFavorite}=require("../queries/userProfile")
 
 users.post("/",async (req,res)=>{
   try {
@@ -53,6 +53,47 @@ users.get("/emails/:email", async (req, res) => {
   }
 });
 
+users.get("/firebase/:uid", async (req, res) => {
+  const { uid } = req.params;
+  const user = await getUserByUID(uid);
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404).json({ error: "not found" });
+  }
+});
+
+users.get("/user/:user_id/favorites", async(req,res)=>{
+
+  const {user_id}=req.params
+  const favorites=await getAllFavorites(user_id)
+  if (favorites){
+    res.json(favorites)
+  }
+  else{
+    res.status(404).json({ error: "not found" });
+
+  }
+})
+
+users.post("/user/:user_id/favorites",async (req,res)=>{
+
+  const {user_id}=req.params
+  const {id}=req.body
+  try {
+    const favorite=await addFavorite(id,user_id)
+    if (favorite){
+        res.json(favorite)
+    }
+    else{
+        res.status(404).json({ error: "not found" });
+
+    }
+  } catch (error) {
+    console.log(error)
+  }
+
+})
 
 
 module.exports=users
