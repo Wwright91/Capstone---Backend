@@ -36,7 +36,16 @@ CREATE TABLE user_profile (
     last_name TEXT,
     username TEXT,
     email TEXT,
-    password TEXT
+    password TEXT,
+    favorites TEXT,
+    uid TEXT
+);
+
+DROP TABLE IF EXISTS favorites;
+
+CREATE TABLE favorites (
+    business_id INT,
+    user_id TEXT
 );
 
 DROP TABLE IF EXISTS comments;

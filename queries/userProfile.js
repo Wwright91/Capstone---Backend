@@ -2,9 +2,9 @@ const db = require("../db/dbConfig.js");
 
 const createNewUser=async (userObj)=>{
 
-    const {first_name,last_name,username, email,password}=userObj
+    const {first_name,last_name,username, email,password,favorites,uid}=userObj
     try {
-        const newUser= await db.oneOrNone("INSERT INTO user_profile (first_name,last_name,username, email, password) VALUES ($1,$2,$3,$4,$5) RETURNING *",[first_name,last_name,username, email, password])
+        const newUser= await db.oneOrNone("INSERT INTO user_profile (first_name,last_name,username, email, password,favorites,uid) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *",[first_name,last_name,username, email, password,favorites,uid])
         return newUser
 
         
@@ -48,7 +48,16 @@ const updateUser = async (id, userObj) => {
   };
   const getUserByEmail= async (email)=>{
     try {
-      const user= await db.any("SELECT * FROM user_profile WHERE email=$1",email);
+      const user= await db.any("SELECT * FROM user_profile WHERE email=$1 RETURNING *",email);
+      return user
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+  const getUserByUID= async (uid)=>{
+    try {
+      const user= await db.any("SELECT * FROM user_profile WHERE uid=$1",uid);
       return user
     } catch (error) {
       console.log(error)
@@ -56,8 +65,30 @@ const updateUser = async (id, userObj) => {
 
   }
 
+  const getAllFavorites=async (id)=>{
+    try {
+        const favorites=await db.any(" SELECT * FROM favorites JOIN businesses ON favorites.business_id=businesses.id WHERE favorites.user_id=$1",[id])
+        return favorites
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+const addFavorite=async (business_id,id)=>{
+
+
+  try {
+      const favorite= await db.oneOrNone("INSERT INTO favorites (business_id,user_id) VALUES ($1,$2) RETURNING *",[business_id,id])
+      return favorite
+
+      
+  } catch (error) {
+      console.log(error)
+  }
+}
 
 
 
 
-module.exports={createNewUser,getAllUsers,updateUser,deleteUser,getUserByEmail}
+module.exports={createNewUser,getAllUsers,updateUser,deleteUser,getUserByEmail,getUserByUID,addFavorite,getAllFavorites}
