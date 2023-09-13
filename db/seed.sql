@@ -1,5 +1,3 @@
-\c melanated_diamonds_dev
-
 INSERT INTO businesses (name, address, contact_num, year_opened, is_online, is_store, img, category, website, description) VALUES
 ('DA SPOT', '445 Albee Square West, Brooklyn, NY 11201', '347-903-6729', 2017, true, true, 'https://cdn.shopify.com/s/files/1/2019/0047/files/Screenshot_2020-02-09-09-21-57_2_480x480.png?v=1586087614', 'fashion', 'https://daspotnyc.com/', 'Established in May 2017 by three independent Black creatives, Da Spot NYC ("DA SPOT") is a unique fashion boutique featuring 25+ creative brands by people of color. "DA SPOT" is also home to C.A.N.V.A.S Art Gallery, which features the works of local artists.'),
 ('Divine Express Catering', '992 Atlantic Ave, Brooklyn, NY 11238', '718-208-4488', 2005, true, true, 'https://divineflavoredcatering.com/wp-content/uploads/2021/09/logo_web.png', 'restaurant', 'https://dexpresscatering.com/', 'A family-owned and operated business specializing in Nigerian and African cuisine.'),

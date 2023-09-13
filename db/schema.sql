@@ -1,7 +1,10 @@
-DROP DATABASE IF EXISTS melanated_diamonds_dev;
-CREATE DATABASE melanated_diamonds_dev;
+DROP TABLE IF EXISTS comments;
 
-\c melanated_diamonds_dev;
+DROP TABLE IF EXISTS favorites;
+
+DROP TABLE IF EXISTS user_profile;
+
+DROP TABLE IF EXISTS login;
 
 DROP TABLE IF EXISTS businesses;
 
@@ -19,8 +22,6 @@ CREATE TABLE businesses (
     description TEXT
 );
 
-DROP TABLE IF EXISTS login;
-
 CREATE TABLE login (
     first_name TEXT,
     last_name TEXT,
@@ -28,7 +29,6 @@ CREATE TABLE login (
     password TEXT
 );
 
-DROP TABLE IF EXISTS user_profile;
 
 CREATE TABLE user_profile (
     id SERIAL PRIMARY KEY,
@@ -41,14 +41,12 @@ CREATE TABLE user_profile (
     uid TEXT
 );
 
-DROP TABLE IF EXISTS favorites;
 
 CREATE TABLE favorites (
     business_id INT,
     user_id TEXT
 );
 
-DROP TABLE IF EXISTS comments;
 
 CREATE TABLE comments (
  id SERIAL PRIMARY KEY,
