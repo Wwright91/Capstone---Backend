@@ -19,7 +19,8 @@ CREATE TABLE businesses (
     img TEXT,
     category TEXT,
     website TEXT,
-    description TEXT
+    description TEXT,
+    place_id TEXT
 );
 
 CREATE TABLE login (
