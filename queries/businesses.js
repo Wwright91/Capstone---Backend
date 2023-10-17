@@ -105,23 +105,10 @@ const updateBusiness = async (id, business) => {
   }
 };
 
-const getByCategory = async (category) => {
-  try {
-    const filteredBusiness = await db.any(
-      "SELECT * FROM businesses WHERE category=$1",
-      category
-    );
-    return filteredBusiness;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 module.exports = {
   getAllBusinesses,
   getOneBusiness,
   createBusiness,
   deleteBusiness,
-  updateBusiness,
-  getByCategory,
+  updateBusiness
 };
