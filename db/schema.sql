@@ -8,6 +8,8 @@ DROP TABLE IF EXISTS login;
 
 DROP TABLE IF EXISTS businesses;
 
+DROP TABLE IF EXISTS referrals;
+
 CREATE TABLE businesses (
     id SERIAL PRIMARY KEY, 
     name TEXT,
@@ -56,3 +58,14 @@ CREATE TABLE comments (
  business_id INTEGER REFERENCES businesses (id)
  ON DELETE CASCADE
 );
+
+CREATE TABLE referrals (
+    id SERIAL PRIMARY KEY,
+    business_name TEXT,
+    website TEXT,
+    phone TEXT,
+    email TEXT,
+    instagram TEXT,
+    facebook TEXT,
+    twitter TEXT
+)
