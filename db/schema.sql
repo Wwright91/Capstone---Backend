@@ -68,4 +68,4 @@ CREATE TABLE referrals (
     instagram TEXT,
     facebook TEXT,
     twitter TEXT
-)
+);
