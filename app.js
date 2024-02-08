@@ -30,6 +30,9 @@ app.use("/businesses", businessesController);
 const usersController = require("./controllers/usersController.js");
 app.use("/users", usersController);
 
+const referralsController = require("./controllers/referralsController.js");
+app.use("/referrals", referralsController)
+
 app.get("*", (req, res) => {
   res.status(404).send("Page not found!");
 });
